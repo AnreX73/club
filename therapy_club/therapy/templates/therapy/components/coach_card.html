@@ -5,9 +5,12 @@
         <h3>{{ coach.title }}</h3>
         <ul class="coach-spec">
         {% for coach_service in coach.coach_services.all %}
-            <li>{{ coach_service.title }}</li>
+            <li style="color: #4f0780;">{{ coach_service.title }}</li>
         {% endfor %}
     </ul>
+    <div class="work-time-box">
+        {{ coach.working_time|safe }}
+    </div>
         
     </div>
     <div class="coach-card-box coach-card-circle slide-from-right">
