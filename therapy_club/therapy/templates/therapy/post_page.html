@@ -1,0 +1,28 @@
+{% extends 'therapy/base.html' %}
+
+
+{% block content %}
+
+<div class="spacer"></div>
+<h2 style="text-align: center;color: #4f0780;margin-bottom: 1.5rem;">Статьи</h2>
+<div class="all-posts-container">
+    <div class="main-post-container">
+        <h3>{{ post.title }}</h3>
+        <h5 style="opacity: 0.5;">{{ post.post_cat }}</h5>
+        <p>{{ post.content|safe }}</p>
+        
+        
+    </div>
+    <div class="else-posts-container">
+        {%  for unselect in unselected_posts %}
+        <h3>{{ unselect.title }}</h3>
+        <h5 style="opacity: 0.5;">{{ unselect.post_cat }}</h5>
+        <p>{{ unselect.content|safe|linebreaks|truncatewords:36 }}</p>
+        <a href="{% url 'post_page' unselect.slug %}" style="display: flex;align-items: center;color: #4f0780;">читать статью <span style="color: #4f0780;font-size: 2rem;">&#10144;</span></a>
+        <hr class="price-line">
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock content %}

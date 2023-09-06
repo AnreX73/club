@@ -1,0 +1,28 @@
+
+<div class="coach-card">
+    <div class="coach-card-box">
+        
+        <h3>{{ coach.title }}</h3>
+        <ul class="coach-spec">
+        {% for coach_service in coach.coach_services.all %}
+            <li>{{ coach_service.title }}</li>
+        {% endfor %}
+    </ul>
+        
+    </div>
+    <div class="coach-card-box coach-card-circle slide-from-right">
+        {% if coach.image %}
+        <img class="gallery-image" src="{{coach.image.url}}" alt="{{logo.title}}">
+        {% else %}
+        <img style="width: 150px;height: auto;margin-top:20%;" src="{{logo.image.url}}" alt="{{ serv.title }}">
+        {% endif %}
+            
+    </div>
+    <div class="coach-card-box">
+        <h3>{{ coach_photo.title }}</h3>
+         <img class="mini-logo" src="{{logo.image.url}}" alt="{{logo.title}}">
+        {{ coach.content|safe }}
+    </div>
+</div>
+    
+   

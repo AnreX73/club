@@ -1,0 +1,27 @@
+<div class="price-card-wrapper">
+    <h2 class="price-card-title">{{cat.title}}</h2>
+    <div class="price-table">
+        <div class="table-box service-name-title">НАЗВАНИЕ</div>
+        <div class="table-box  service-dur-title">ПРОДОЛЖИТЕЛЬНОСТЬ</div>
+        <div class="table-box  service-price-title">ЦЕНА</div>
+
+    {% for serv in services %}
+    {% if serv.cat_id == cat.id and serv.is_published %}
+    <a style="color: #3f3f3f;" href="{% url 'service' serv.slug  %}" class="table-box  service-title-box">{{ serv.title}} </a>  
+    <div class="table-box  service-dur-box">{{ serv.duration}}</div>
+    <div class="table-box service-price-box price-mark">{{ serv.nice_price}}</div>
+   
+    {% if abonements %}
+    {% for abo in abonements %}
+    {% if abo.service_link_id == serv.id and abo.is_published %}
+    <div  class="table-box  service-title-box abo-box">{{ abo.title}}  {{abo.sub_title}} </div>  
+    <div class="table-box  service-dur-box abo-box">{{ abo.abonement_duration}}</div>
+    <div class="table-box service-price-box abo-box price-mark">{{ abo.nice_price}}</div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endif %}
+
+    {% endfor %}
+    </div>
+</div>

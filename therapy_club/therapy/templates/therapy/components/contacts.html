@@ -1,0 +1,39 @@
+
+<h2 class="contact-title" id="contact-list">Контакты</h1>
+<div class="contacts-container">
+    <div class="contacts-info-wrapper">
+        {% for contact in contacts %}
+        <div class="contact-info-icon">
+            {% if contact.annotations2 %}
+            <a style="color: black;" href="{{ contact.annotations2|safe }}"><img src="{{ contact.image.url }}" alt="{{ contact.title }}"></a>
+            {% else %}
+            <img src="{{ contact.image.url }}" alt="{{ contact.title }}" >
+            {% endif %}
+        </div>
+        <div class="contact-info">
+            {% if contact.annotations2 %}
+            <a style="color: black;" href="{{ contact.annotations2|safe }}"> {{ contact.annotations1|safe }} </a> 
+            {% else %}
+            <p>{{ contact.annotations1|safe }} </p>
+            {% endif %}      
+        </div>
+        {% endfor %}
+    </div>
+    <div class="contact-map-wrapper origin-map">
+        {{ contacts_map.annotations2|safe }}
+
+    </div>
+    <div class="contact-map-wrapper midi-map">
+        {{ contacts_midi_map.annotations2|safe }}
+
+    </div>
+    <div class="contact-map-wrapper mini-map">
+        {{ contacts_mini_map.annotations2|safe }}
+
+    </div>
+    <div class="contact-map-wrapper micro-map">
+        {{ contacts_micro_map.annotations2|safe }}
+
+    </div>
+
+</div>

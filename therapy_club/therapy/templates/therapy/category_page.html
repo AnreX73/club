@@ -1,0 +1,111 @@
+{% extends 'therapy/base.html' %}
+
+
+{% block content %}
+<div class="spacer"></div>
+<div class="category-page-wrapper">
+<div class="category-page-main-info">
+    <div class="category-page-service-container">
+    <div class="category-page-service-prices">
+        <div class="caterory-page-image-box">
+            {% if category.image %}
+            <img  src="{{category.image.url}}" alt="{{ category.title }}">
+            {% else %}
+            <img style="width: 150px;height: auto;margin-top:20%;" src="{{logo.image.url}}" alt="{{ cat.title }}">
+            {% endif %}
+        </div>
+        <div class="category-page-title"><h2>{{category.title}}</h2></div>
+    </div>
+    <hr class="price-line">
+    <div class="category-price-title"><h3>Программы и цены</h3></div>
+    <div class="categories-servicies">
+        {% for serv in services %}
+        {% if serv.cat_id == category.id %}
+        <div class="service-container-title"><h5>{{serv.title}}</h5> </div>
+        <div class="service-container-box">
+            <div class="service-container-box-text">{{ serv.content|safe}}</div>
+            <div class="service-container-box-dur">{{ serv.duration}}</div>
+            <div class="service-container-box-price price-mark">{{ serv.nice_price}}</div>
+        </div>
+        {% for abo in serv.abonements_set.all %}
+        {% if abo.is_published %}
+        <div class="service-container-box">
+            <div style="font-weight: 600;color: #4f0780;" class="service-container-box-text">{{ abo.title }} {{ abo.sub_title }}</div>
+            <div style="font-weight: 600;color: #4f0780;" class="service-container-box-dur">{{ abo.abonement_duration }}</div>
+            <div style="font-weight: 600;color: #4f0780;" class="service-container-box-price price-mark">{{ abo.nice_price }}</div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        <hr class="price-line">
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% if services_count < 2 %}
+    {% if service_video %}
+    <h3 style="color: #4f0780;"> Видео </h3>
+    {% endif %}
+    {% for video in service_video %}
+    <div class="video-box">
+    <video  controls  src="{{video.video.url}}" type="video/mp4"></video> 
+    </div>
+    {% endfor %}
+    {% endif %}
+    </div>
+    
+    <div class="category-page-content">
+        <h3 class="category-content-title" >Описание</h3>
+        {{ category.content|safe|linebreaks}}
+        {% if category_gallery %}
+        <h3 style="color: #4f0780;"> Галерея </h3>
+        {% endif %}
+        <div class="mini-gallery-wrapper">
+           
+                  {% for img in category_gallery %} 
+                  {% if img.image %}
+                  <div class="mini-gallery-card"><img class="mini-gallery-img" src="{{ img.image.url}}" alt="img.note"></div>
+                  {% endif %}
+                  {% endfor %}
+        </div>
+        {% if services_count >= 2 %}
+        {% if service_video %}
+        <h3 style="color: #4f0780;"> Видео </h3>
+        {% endif %}
+        {% for video in service_video %}
+        <div class="video-box">
+        <video  controls  src="{{video.video.url}}" type="video/mp4"></video> 
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% if service_posts %}
+        <h3 style="color: #4f0780;"> Статьи </h3>
+        {% endif %}
+        {% for post in service_posts %}
+        {% if post %}
+        <a style="color: #5c5c5c;" href="{% url 'post_page' post.slug %}"><h4 style="display: flex;align-items: center;">{{ post.title}} <span style="color: #4f0780;font-size: 2rem;">&#10144;</span>  </h4> </a>
+            
+        {% endif %}
+        {% endfor %}
+    </div>
+    
+
+</div>
+</div>
+<div class="modal-gallery-wrapper modal-gallery-content">
+    {% for serv in services %} 
+    {% if serv.cat_id == category.id %}
+           
+          {% for img in serv.servicesgallery_set.all %} 
+          {% if img.image %}
+          <div class="gallery-slide-box"><img class="gallery-slide" src="{{ img.image.url}}" alt="img.note"></div>
+          {% endif %}
+          {% endfor %}
+      
+    {% endif %}
+    {% endfor %}
+    <div class="gallery-btn left-gallery-btn"><h1> < </h1>  </div>
+    <div class="gallery-btn right-gallery-btn"> <h1> > </h1> </div>
+    <svg class="js-gallery-modal-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg>
+</div>
+
+{% endblock content %}

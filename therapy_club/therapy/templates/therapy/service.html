@@ -1,0 +1,100 @@
+{% extends 'therapy/base.html' %}
+{% block content %}
+<div class="spacer"></div>
+<div class="service-container">
+   <div class="price-gallery-container">
+    <div class="service-title-img-wrapper">
+        <h3 class="service-title">{{ service.title }}</h3>
+        <div class="service-icon-image">
+            {% if service.image %}
+            <img  src="{{service.image.url}}" alt="{{ serv.title }}">
+            {% else %}
+            <img  src="{{logo.image.url}}" alt="{{ serv.title }}">
+            {% endif %}
+        </div>
+    </div>   
+            <h4>Цены</h4>
+        <div class="service-price-container">
+            {% if service_abo %}
+            <h5>Стоимость {{word}} без абонемента</h5> <h5>{{ service.price }} руб.</h5>
+            {% else %}
+            <h5>Стоимость {{word}} </h5> <h5>{{ service.price }} руб.</h5>
+            {% endif %}
+            <h5>Продолжительность</h5> <h5>{{ service.duration}}</h5>
+            {% if service_abo %}
+            {% for abo in service_abo %}
+        <div class="service-abo-box">
+            <div class="service-abo-title">{{ abo.title}} {{ abo.sub_title}}</div>
+            
+            <div class="service-abo-sub-dur">{{ abo.abonement_duration}} </div>
+            
+              
+        </div>
+        <div class="service-abo-sub-price">{{abo.abonement_price}}руб.</div>
+        {% endfor %}
+        {% endif %}
+        </div>
+        
+        <div class="service-gallery-container">
+            
+            {% if service.video %}
+            <video src="{{service.video.url}}" width="100%" controls ></video>
+            {% else %}
+            <hr>
+            <h5 style="text-align: center;color: rgb(60, 1, 114);margin-bottom: 0.5rem;">Еще услуги в категории {{ service.cat }}</h5>
+            <div class="service-links-box">
+               {% for link in service_links %}
+               <div class="service-link-box">
+               <a href="{% url 'service' link.slug %}">{{ link.title }}</a>
+               </div>
+               {% endfor%}
+                </div>  
+            {% endif %}
+            
+        </div>
+   </div>
+   <div class="content-container">
+    <h3 class="service-title">Описание</h3>
+    <p>{{ service.content|safe }}</p>
+    {% if service.video and service_links %} 
+    <hr>
+    <h5 style="text-align: center;color: rgb(60, 1, 114);margin-bottom: 0.5rem;">Еще услуги в категории {{ service.cat }}</h5>
+    <div class="service-links-box">
+       {% for link in service_links %}
+       <div class="service-link-box">
+       <a href="{% url 'service' link.slug %}">{{ link.title }}</a>
+       </div>
+       {% endfor%}
+    </div> 
+    {% endif %}  
+   </div>
+</div>
+
+
+<div class="gallery-wrapper">
+{% if gallery %}
+<h3 style="text-align: center;color: rgb(65, 2, 124);">Галерея</h3>
+<div class="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      {% for gal in gallery%}
+      <div class="swiper-slide"><img src="{{ gal.image.url}}" alt="gal.note"></div>
+      {% endfor %}
+      ...
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+  
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  
+    <!-- If we need scrollbar -->
+    
+  </div>
+  {% endif %}
+</div> 
+
+
+{% endblock content %}

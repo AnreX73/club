@@ -1,0 +1,73 @@
+{% extends 'therapy/base.html' %}
+
+
+{% block content %}
+
+{% include 'therapy/components/comerc_block.html'%}
+
+<!--   модальное окно новости  -->
+
+{% for new in news %}
+{% if new.is_published %}
+<div class="post-modal" data-modal="1">
+    
+    <span class="post-modal__cross" > Х </span>
+
+    <h3 class="post-modal__title">{{new.title}}</h3>
+    <div class="post-modal__content">{{new.content|safe}}</div>
+
+ </div>
+ <div class="post-overlay" id="post-overlay-modal"></div>
+ {% endif %}
+{% endfor %}
+
+  <!--  конец модальное окно новости  -->
+
+<div class="modal-action-wrapper modal-content">
+    {% for action in commerc %}
+    <div class="modal-box modal-action-icon-box">
+        <div class="modal-action-sub-title">{{ action.sub_title}}</div>
+        {% if action.icon %}
+        <img src="{{ action.icon.url }}" alt="action.title">
+        {% else %}
+        <img src="{{ logo.image.url }}" alt="action.title">
+        {% endif %} 
+    </div> 
+    {% if action.image %}
+    <div class="modal-action-img-wrapper">
+    <img src="{{ action.image.url }}" alt="action.title">
+    </div>
+    {% endif %}
+    <div class="modal-box modal-action-content-box">{{ action.content|safe }}</div>
+
+    {% endfor %}
+    {% if commerc_count > 1%}
+    <hr>
+    <a href="{% url 'actions' %}">еще акции >>></a>
+    {% endif %}
+    <svg class="js-modal-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg>
+</div>
+<hr>
+<h2 style="text-align: center;color: #16b1f8;">Наши услуги</h2>
+
+<!-- <section class="categories-list">
+    {% for cat in  service_cats %}
+    {% if cat.is_published %}
+        {% include  'therapy/components/alt_category_card.html' %}
+    {% endif %}   
+    {% endfor%}
+</section> -->
+<section class="alt-categories-list">
+    {% for cat in  service_cats %}
+    {% if cat.is_published %}
+        {% include  'therapy/components/alt_category_card.html' %}
+    {% endif %}   
+    {% endfor%}
+  
+</section>
+<hr>
+    
+
+{% include  'therapy/components/contacts.html' %}
+
+{% endblock content %}

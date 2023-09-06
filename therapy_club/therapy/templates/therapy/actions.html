@@ -1,0 +1,31 @@
+{% extends 'therapy/base.html' %}
+
+{% block content %}
+<div class="spacer"></div>
+<h3 style="text-align:center;color: rgb(55, 1, 105);">ВСЕ АКЦИИ </h3>
+<div class="actions-page-wrapper">
+    {% for action in actions %}
+<div class="actions-page-box">
+    
+    <div class="modal-box modal-action-icon-box ">
+        <div class="modal-action-sub-title">{{ action.sub_title}}</div>
+        {% if action.icon %}
+        <img src="{{ action.icon.url }}" alt="action.title">
+        {% else %}
+        <img src="{{ logo.image.url }}" alt="action.title">
+        {% endif %}
+    </div>
+    {% if action.image %}
+    <div class="modal-action-img-wrapper">
+    <img src="{{ action.image.url }}" alt="action.title">
+    </div>
+    {% endif %}
+    <div class="modal-box modal-action-content-box">{{ action.content|safe }}</div>
+
+    
+
+   
+</div>
+{% endfor %}
+</div>
+{% endblock content %}

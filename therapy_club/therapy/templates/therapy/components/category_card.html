@@ -1,0 +1,17 @@
+<a href="{% url 'service' serv.slug  %}">
+<div class="service-card-wrapper">
+    <div class="cat-service-box service-icon-title">
+        <div class="service-icon-image">
+            {% if serv.image %}
+            <img  src="{{serv.image.url}}" alt="{{ serv.title }}">
+            {% else %}
+            <img  src="{{logo.image.url}}" alt="{{ serv.title }}">
+            {% endif %}
+        </div>
+        <div class="service-title">{{ serv.title }}</div>
+    </div>
+        
+    <div class="cat-service-box service-discription">{{ serv.content|safe|linebreaks|truncatewords:35 }}</div>   
+    <div class="cat-service-box service-link"> читать дальше >>> </div>   
+    </div>
+</a>

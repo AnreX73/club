@@ -1,0 +1,14 @@
+{% extends 'therapy/base.html' %}
+
+
+{% block content %}
+<div class="spacer"></div>
+<div class="prices-container">
+{% for cat in cats %}
+
+{% include  'therapy/components/price_card.html' %}
+<hr>
+
+{% endfor %}
+</div>
+{% endblock content %}

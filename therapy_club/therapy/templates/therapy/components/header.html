@@ -1,0 +1,39 @@
+
+
+<header>
+
+<a href="/" class="logo">
+   <img class="gallery-image" src="{{logo.image.url}}" alt="{{logo.title}}">
+</a>
+<nav>
+  <ul class="nav-menu">
+    <li><span class="kostil">УСЛУГИ &#9660;</span>
+    <ul >
+      {% for service_cat in service_category %}
+        <li class="dropdown-menu">
+          <a  href="{% url 'category_page' service_cat.slug %}">
+            <div>{{ service_cat.title }}</div>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    </li>
+    <li><a href='{% url "coaches"%}#our-team'>ТРЕНЕРЫ</a></li>
+    <li><a href='{% url "prices"%}#our-team'>ЦЕНЫ И АБОНЕМЕНТЫ</a></li>
+    <li><a href='{% url "rules"%}#rules'>ПРАВИЛА</a></li>
+    <li>
+      <a href="{{ contact_phone.annotations2|safe }}">
+        <div style="display: flex;">
+          <img style="height: 17px;opacity: 70%;" src="{{contact_phone.image.url}}" alt="{{contact_phone.title}}">
+          <span>{{ contact_phone.annotations1|safe }}</span>
+        </div>
+      </a>
+    </li>
+    <li><a href="{% url 'home'%}#contact-list">КОНТАКТЫ</a></li>
+
+  </ul>
+</nav>
+<div class="burger">
+  <span></span>
+</div>
+</header>
