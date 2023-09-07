@@ -1635,8 +1635,12 @@ border: 4px solid #fff;
   
   padding: 1rem;
 }
+.main-post-container{
+  background: var(--light-gradient);
+}
 .main-post-container p{
 text-align: justify;
+line-height: 1.3;
 }
 
 .else-posts-container p{
