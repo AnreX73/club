@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'ckeditor_uploader',
+    'debug_toolbar',
     'therapy.apps.TherapyConfig',
     'django_cleanup.apps.CleanupConfig'
 ]
@@ -49,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 AUTH_USER_MODEL = 'therapy.User'
@@ -147,3 +149,7 @@ CKEDITOR_CONFIGS = {
         'height': '60%'
     },
 }
+
+INTERNAL_IPS = [
+    "127.0.0.1",   
+]
