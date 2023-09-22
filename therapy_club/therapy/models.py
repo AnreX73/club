@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
@@ -204,6 +206,7 @@ class Commercial(models.Model):
                               verbose_name='изображение к рекламной статье, если есть')
     content = RichTextField(blank=True, verbose_name='текст рекламы')
     is_published = models.BooleanField(default=False, verbose_name='Публикация')
+    end_action = models.DateField(default=date.today, verbose_name='конец акции')
 
     class Meta:
         verbose_name = 'Акции и реклама'
@@ -219,7 +222,7 @@ class Abonements(models.Model):
     abonement_duration = models.CharField(max_length=255, blank=True, default=' - ', verbose_name='кол-во занятий или '
                                                                                                   'сеансов')
     abonement_price = models.PositiveIntegerField(null=True, default=0, verbose_name='Цена абонемента')
-    validity = models.CharField(max_length=100,  verbose_name='срок действия')
+    validity = models.CharField(max_length=100, verbose_name='срок действия')
     is_published = models.BooleanField(default=False, verbose_name='Публикация')
 
     def nice_price(self):
@@ -231,5 +234,3 @@ class Abonements(models.Model):
         verbose_name = 'Абонемет'
         verbose_name_plural = 'Абонементы'
         ordering = ['id']
-
-

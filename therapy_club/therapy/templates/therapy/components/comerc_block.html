@@ -9,6 +9,9 @@
     <div class="comerc-link" >
         <h1 class="comerc-title">{{ com.title }}</h1>
         <p class="comerc-title">{{ com.sub_title }}</p>
+        
+        <p style="font-size: 1rem;">дней до окончания акции <span style="color: red;font-size: 1.4rem;margin-left: 0.5rem;"> {{day_count.days}}</span></p>
+        
         <a href=""><button class="custom-btn btn-5" id="js-open-modal"><span style="font-weight:bold;">{{com.about}}</span></button> </a>
     {% endfor %}    
     </div>
@@ -30,6 +33,7 @@
   <div class="comerc-mini-text">
     <div class="comercmini-title"><h1 class="comerc-title">{{ com.title }}</h1></div>
     <div class="comerc-mini-title"><p>{{ com.sub_title }}</p></div>
+    <p style="font-size: 0.8rem;">дней до окончания акции <span style="color: red;font-size: 1.1rem;margin-left: 0.3rem;"> {{day_count.days}}</span></p>
   </div>
   <a href=""><button class="mini-btn" id="mini-js-open-modal" ><span style="font-weight:bold;">{{com.about}}</span></button> </a>
   {% endfor %}

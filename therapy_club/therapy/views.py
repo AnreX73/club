@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
-
+import datetime
 from therapy.models import Services, Coaches, Post, ServiceCategory, Gallery, Contacts, Commercial, Graphics, \
     Abonements, ServicesGallery
 
@@ -19,6 +19,10 @@ def index(request):
     service_cats = ServiceCategory.objects.exclude(title='Запасной порт').order_by('pk')
     favicon = Graphics.objects.get(title='фавикон')
     news = Post.objects.filter(title='Внимание !')
+    print(datetime.date.today())
+    for i in commerc:
+        day_countss = i.end_action - datetime.date.today()
+        print(day_countss.days)
 
     context = {
         'title': 'THERAPY CLUB',
@@ -33,7 +37,8 @@ def index(request):
         'contacts_micro_map': contacts_micro_map,
         'commerc_count': commerc_count,
         'favicon': favicon,
-        'news': news
+        'news': news,
+        'day_count': day_countss
 
     }
 
@@ -161,7 +166,8 @@ def category_page(request, slug):
 
 def post(request, slug):
     post = get_object_or_404(Post, slug=slug)
-    unselected_posts = Post.objects.exclude(id=post.id).exclude(post_cat__title='х-запасной порт').filter(is_published=True)
+    unselected_posts = Post.objects.exclude(id=post.id).exclude(post_cat__title='х-запасной порт').filter(
+        is_published=True)
 
     context = {
         'post': post,
