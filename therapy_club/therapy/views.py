@@ -19,10 +19,11 @@ def index(request):
     service_cats = ServiceCategory.objects.exclude(title='Запасной порт').order_by('pk')
     favicon = Graphics.objects.get(title='фавикон')
     news = Post.objects.filter(title='Внимание !')
-    print(datetime.date.today())
-    for i in commerc:
-        day_countss = i.end_action - datetime.date.today()
-        print(day_countss.days)
+    if commerc:
+        for i in commerc:
+            day_countss = i.end_action - datetime.date.today()
+    else:
+        day_countss = None
 
     context = {
         'title': 'THERAPY CLUB',
