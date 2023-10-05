@@ -2,7 +2,7 @@
 <section class="comerc-image-wrapper">
     <div class="comerc-box comerc-image-box"><img src="{{ main_image.image.url }}" alt="{{ main_image.title }}"></div>
     <div class="comerc-box backround-link-box"></div>
-    {% if commerc %}
+    {% if commerc and day_count %}
     {% for com in commerc %}
     <div  class="comerc-box comerc-link-box">
     

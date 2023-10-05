@@ -5,6 +5,15 @@ from therapy.models import Services, Coaches, Post, ServiceCategory, Gallery, Co
     Abonements, ServicesGallery
 
 
+def day_count(end_day):
+    count_of_days = end_day - datetime.date.today()
+    if count_of_days.days <=0:
+        count_of_days = None
+
+    return count_of_days
+
+
+
 def index(request):
     logo = Graphics.objects.get(title='логотип')
     contacts = Contacts.objects.exclude(title='Карта').exclude(title='средняя карта').exclude(
@@ -21,7 +30,8 @@ def index(request):
     news = Post.objects.filter(title='Внимание !')
     if commerc:
         for i in commerc:
-            day_countss = i.end_action - datetime.date.today()
+            day_countss = day_count(i.end_action)
+            print(day_countss)
     else:
         day_countss = None
 
