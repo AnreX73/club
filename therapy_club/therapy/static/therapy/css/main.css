@@ -389,6 +389,7 @@ text-align: center;
   font-size: 3.5rem;
   font-weight: bold;
   color: red; 
+  text-align: center;
 }
 
 @media (max-width: 1023px) {
@@ -409,6 +410,7 @@ text-align: center;
   
   .comerc-title{
     font-size: 2.5rem; 
+    
   }
 
 }
@@ -1578,7 +1580,7 @@ border: 4px solid #fff;
   /*  Побочные стили   */
   box-shadow: 0 3px 10px -.5px rgba(0, 0, 0, .2);
   text-align: center;
-  padding: 30px;
+  padding: 20px;
   border-radius: 8px;
   background:rgb(238, 235, 230);
   transition: 0.5s all;
@@ -1612,6 +1614,10 @@ border: 4px solid #fff;
 }
 
 @media (max-width: 533px){
+  /* .post-modal{
+    margin-left: 3px;
+    margin-right: 3px;
+  } */
   .post-modal__content{
     padding:5px;
     font-size: 1.1rem ;
