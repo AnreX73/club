@@ -48,7 +48,7 @@ class ServicesGalleryAdmin(admin.TabularInline):
 
 class ServicesAdmin(admin.ModelAdmin):
     inlines = [ServicesGalleryAdmin]
-    list_display = ('id', 'title', 'cat', 'gethtmlPhoto', 'price', 'is_published')
+    list_display = ('id', 'title', 'cat', 'gethtmlPhoto', 'price','alt_price','is_published')
     list_display_links = ('id', 'cat', 'title')
     list_editable = ('is_published',)
     search_fields = ('title', 'cat',)
@@ -116,7 +116,7 @@ class GalleryAdmin(admin.ModelAdmin):
 
 @admin.register(Commercial)
 class CommercialAdmin(admin.ModelAdmin):
-    list_display = ('title', 'about', 'gethtmlPhoto', 'is_published')
+    list_display = ('title', 'about', 'gethtmlPhoto','cat_link', 'is_published')
     list_display_links = ('title', 'gethtmlPhoto')
     search_fields = ('title',)
     list_editable = ('is_published',)

@@ -25,7 +25,17 @@
         <div class="service-container-box">
             <div class="service-container-box-text">{{ serv.content|safe}}</div>
             <div class="service-container-box-dur">{{ serv.duration}}</div>
-            <div class="service-container-box-price price-mark">{{ serv.nice_price}}</div>
+            {% if serv.sale_procent == 0 %}
+            <div class="service-container-box-price price-mark">
+                {{ serv.nice_price}}
+            </div>
+            {% else %}
+            <div class="service-container-box-price price-mark">
+                <strike style="font-size: 0.8em;">{{ serv.nice_price}}</strike>
+                <div class="alt-price">{{ serv.alt_price }}</div>
+                <div class="sale_mark">- {{ serv.sale_procent }} %</div>
+            </div>
+            {% endif %}
         </div>
         {% for abo in serv.abonements_set.all %}
         {% if abo.is_published %}
