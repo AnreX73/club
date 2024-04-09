@@ -2,27 +2,27 @@
 <section class="comerc-image-wrapper">
     <div class="comerc-box comerc-image-box"><img src="{{ main_image.image.url }}" alt="{{ main_image.title }}"></div>
     <div class="comerc-box backround-link-box"></div>
-    {% if commerc and day_count %}
+    {% if commerc %}
     {% for com in commerc %}
     <div  class="comerc-box comerc-link-box">
-    
+
     <div class="comerc-link" >
         <h1 class="comerc-title">{{ com.title }}</h1>
         <p class="comerc-title">{{ com.sub_title }}</p>
 
-        {% comment %} <p style="font-size: 1rem;">дней до окончания акции <span style="color: red;font-size: 1.4rem;margin-left: 0.5rem;"> {{day_count.days}}</span></p> {% endcomment %}
+        <!-- <p style="font-size: 1rem;">дней до окончания акции <span style="color: red;font-size: 1.4rem;margin-left: 0.5rem;"> {{day_count.days}}</span></p> -->
 
         <a href=""><button class="custom-btn btn-5" id="js-open-modal"><span style="font-weight:bold;">{{com.about}}</span></button> </a>
-    {% endfor %}    
+    {% endfor %}
     </div>
-    
+
     </div>
     {% else %}
     <div  class="comerc-box comerc-link-box">
-        
+
         <img style="width: 300px;" src="{{logo.image.url}}" alt="{{logo.title}}">
-        
-    </div> 
+
+    </div>
     {% endif %}
 
 </section>
@@ -33,14 +33,14 @@
   <div class="comerc-mini-text">
     <div class="comercmini-title"><h1 class="comerc-title">{{ com.title }}</h1></div>
     <div class="comerc-mini-title"><p>{{ com.sub_title }}</p></div>
-    {% comment %} <p style="font-size: 0.8rem;">дней до окончания акции <span style="color: red;font-size: 1.1rem;margin-left: 0.3rem;"> {{day_count.days}}</span></p> {% endcomment %}
+    <!-- <p style="font-size: 0.8rem;">дней до окончания акции <span style="color: red;font-size: 1.1rem;margin-left: 0.3rem;"> {{day_count.days}}</span></p> -->
   </div>
   <a href=""><button class="mini-btn" id="mini-js-open-modal" ><span style="font-weight:bold;">{{com.about}}</span></button> </a>
   {% endfor %}
-  
-   
+
+
 {% else %}
 <div ></div>
 {% endif %}
-  
+
 </section>

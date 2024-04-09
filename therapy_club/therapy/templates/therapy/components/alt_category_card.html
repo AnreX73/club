@@ -1,15 +1,17 @@
-<div class="category-card-wrapper">
-    <div class="category-box-grid">
-        <div class="category-img-box">
-            {% if cat.image %}
-            <img  src="{{cat.image.url}}" alt="{{ cat.title }}">
-            {% else %}
-            <img style="width: 150px;height: auto;margin-top:20%;" src="{{logo.image.url}}" alt="{{ cat.title }}">
-            {% endif %}
+<a style="color:#5c5c5c;" href="{% url 'category_page' cat.slug %}">
+    <div class="category-card-wrapper">
+        <div class="category-box-grid">
+            <div class="category-img-box">
+                {% if cat.image %}
+                <img  src="{{cat.image.url}}" alt="{{ cat.title }}">
+                {% else %}
+                <img style="width: 150px;height: auto;margin-top:20%;" src="{{logo.image.url}}" alt="{{ cat.title }}">
+                {% endif %}
+            </div>
+            <div class="category-title-box"><h3>{{cat.title}}</h3></div>
         </div>
-        <div class="category-title-box"><h3>{{cat.title}}</h3></div>
+        <hr>
+        <div class="category-box alt-category-content">{{cat.content|safe|linebreaks|truncatewords:46}}</div>
+        <a class="alt-category-link" href="{% url 'category_page' cat.slug %}">к описанию и ценам <span style="color: #4f0780;font-size: 2rem;">&#10144;</span></a>
     </div>
-    <hr>
-    <div class="category-box alt-category-content">{{cat.content|safe|linebreaks|truncatewords:46}}</div>
-    <a class="alt-category-link" href="{% url 'category_page' cat.slug %}">к описанию и ценам <span style="color: #4f0780;font-size: 2rem;">&#10144;</span></a>  
-</div>
+    </a>
