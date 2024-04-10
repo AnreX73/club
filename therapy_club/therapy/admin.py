@@ -116,7 +116,7 @@ class GalleryAdmin(admin.ModelAdmin):
 
 @admin.register(Commercial)
 class CommercialAdmin(admin.ModelAdmin):
-    list_display = ('title', 'about', 'gethtmlPhoto','cat_link', 'is_published')
+    list_display = ('title', 'about', 'gethtmlPhoto', 'is_published')
     list_display_links = ('title', 'gethtmlPhoto')
     search_fields = ('title',)
     list_editable = ('is_published',)

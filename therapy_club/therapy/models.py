@@ -275,13 +275,7 @@ class Commercial(models.Model):
     sub_title = models.CharField(
         max_length=255, blank=True, verbose_name="Подзаголовок, если нужен"
     )
-    cat_link = models.ForeignKey(
-        ServiceCategory,
-        on_delete=models.CASCADE,
-        default=6,
-        verbose_name="к какой категории ",
-        related_name="commerc_cat_link",
-    )
+    services_link = models.ManyToManyField(Services, default=5, verbose_name="к какой услуге относится")
     about = models.CharField(
         max_length=100, blank=True, verbose_name="Слоган для ссылки на кнопке"
     )
