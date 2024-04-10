@@ -125,3 +125,4 @@ venv.bak/
 dmypy.json
 /therapy_club/therapy/static/
 /therapy_club/media/images/
+/therapy_club/therapy/migrations/
