@@ -7,11 +7,10 @@ from therapy.models import Services, Coaches, Post, ServiceCategory, Gallery, Co
 
 def day_count(end_day):
     count_of_days = end_day - datetime.date.today()
-    if count_of_days.days <=0:
+    if count_of_days.days <= 0:
         count_of_days = None
 
     return count_of_days
-
 
 
 def index(request):

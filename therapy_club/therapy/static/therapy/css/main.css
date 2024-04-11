@@ -134,9 +134,10 @@ hr {
 }
 
 .price-mark:after,
-.alt-price:after {
+.alt-price:after,
+.alt-price-list:after {
 
-  content: " \20BD";
+  content: "\20BD";
   font-family: 'PT Sans', serif;
   font-size: 0.9rem;
   
@@ -1487,6 +1488,12 @@ footer {
   position: absolute;
   bottom: 1rem;
   font-size: 0.9rem;
+  font-weight: 600;
+}
+.alt-price-list{
+  position: absolute;
+  top:0.2rem;
+  left: 3rem;
 }
 
 .sale_mark {

@@ -120,7 +120,7 @@ class CommercialAdmin(admin.ModelAdmin):
     list_display_links = ('title', 'gethtmlPhoto')
     search_fields = ('title',)
     list_editable = ('is_published',)
-    prepopulated_fields = {'slug': ('about',)}
+    prepopulated_fields = {'slug': ('sub_title',)}
     save_on_top = True
     ordering = ('-pk',)
 

@@ -9,7 +9,17 @@
     {% if serv.cat_id == cat.id and serv.is_published %}
     <a style="color: #3f3f3f;" href="{% url 'service' serv.slug  %}" class="table-box  service-title-box">{{ serv.title}} </a>  
     <div class="table-box  service-dur-box">{{ serv.duration}}</div>
-    <div class="table-box service-price-box price-mark">{{ serv.nice_price}}</div>
+    {% if serv.sale_procent == 0 %}
+    <div class="table-box service-price-box price-mark">
+        {{ serv.nice_price }}
+    </div>
+    {% else %}
+    <div class="table-box service-price-box price-mark">
+        <del style="font-size: 0.8rem;">{{ serv.nice_price }}</del>
+        <div class="alt-price-list">{{ serv.alt_price }}</div>
+        <div class="sale_mark">- {{ serv.sale_procent }} %</div>
+    </div>
+    {% endif %}
    
     {% if abonements %}
     {% for abo in abonements %}
