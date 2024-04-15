@@ -39,9 +39,12 @@
     </div>
     {% endif %}
     <div class="modal-box modal-action-content-box">{{ action.content|safe }}</div>
-
+    {% if slug_link %}
+        <a class="alt-category-link" href="{% url 'category_page' slug_link %}"> на страницу со скидками <span style="font-size: 2rem;">&#10144;</span> </a>
+    {% endif %}
+    
     {% endfor %}
-    {% if commerc_count > 1%}
+    {% if commerc_count > 1 %}
     <hr>
     <a class="alt-category-link" href="{% url 'actions' %}">еще акции <span style="font-size: 2rem;">&#10144;</span> </a>
     {% endif %}

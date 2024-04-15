@@ -140,7 +140,7 @@ hr {
   content: "\20BD";
   font-family: 'PT Sans', serif;
   font-size: 0.9rem;
-  
+
 }
 
 :root {
@@ -1032,6 +1032,7 @@ header ul li ul li a:hover {
   text-align: center;
 }
 
+
 .abo-box {
   cursor: pointer;
   color: #4f0780;
@@ -1490,16 +1491,25 @@ footer {
   font-size: 0.9rem;
   font-weight: 600;
 }
-.alt-price-list{
+
+.alt-price-list {
   position: absolute;
-  top:0.2rem;
-  left: 3rem;
+  bottom: 2rem;
+  right: 60px;
 }
 
 .sale_mark {
   position: absolute;
   top: -0.5rem;
   left: -3rem;
+  color: #D50000;
+  font-weight: 600;
+}
+
+.sale_mark_list {
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
   color: #D50000;
   font-weight: 600;
 }
@@ -1550,9 +1560,42 @@ footer {
     margin-right: 0.3rem;
   }
 
+  .alt-price-list {
+
+    right: 6vw;
+  }
+
+  .sale_mark_list {
+font-size: 0.9rem;
+    top: 0.5rem;
+    left: 0.5rem;
+
+  }
+
+}
+@media (max-width: 650px) {
+   .sale_mark_list {
+    font-size: 0.8rem;
+        left: -1.7rem;
+    
+      }
+    }    
+
+
+@media (max-width: 490px) {
+  .alt-price-list {
+
+    bottom: 3rem;
+  }
+
+
 }
 
 @media (max-width: 479px) {
+  .alt-price-list {
+
+    bottom: 1.5rem;
+  }
 
   .service-container-box,
   .category-page-content {
@@ -1588,9 +1631,24 @@ footer {
     left: -2rem;
 
   }
+
   .alt-price {
     font-size: 0.8rem;
   }
+
+  .alt-price-list {
+    font-size: 0.8rem;
+    right: 3vw;
+  }
+
+}
+
+@media (max-width: 418px) {
+  .alt-price-list {
+
+    bottom: 2.1rem;
+  }
+
 
 }
 
