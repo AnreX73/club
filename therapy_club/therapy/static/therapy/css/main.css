@@ -134,10 +134,10 @@ hr {
 }
 
 .price-mark:after,
-.alt-price:after,
-.alt-price-list:after {
+.old-price:after,
+.new-price:after {
 
-  content: "\20BD";
+  content:"\20BD";
   font-family: 'PT Sans', serif;
   font-size: 0.9rem;
 
@@ -1025,7 +1025,33 @@ header ul li ul li a:hover {
   border: 1px dotted rgb(202, 200, 200);
   border-radius: 4px;
 }
+.table-discout-box{
+  background: var(--hover-gradient);
+  width: 100%;
+  border: 1px dotted rgb(202, 200, 200);
+  border-radius: 4px;
 
+}
+.table-discout-box{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.two-prices-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content : center;  
+}
+.discount-procent{
+  position: absolute;
+  right: 70%;
+  bottom: 40%;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #D50000;
+}
 .service-dur-box,
 .service-price-box,
 .service-price-title {
@@ -1038,12 +1064,41 @@ header ul li ul li a:hover {
   color: #4f0780;
   font-weight: 600;
 }
+@media (max-width:767px) {
+  .old-price{
+    font-size: 0.9rem;
+  }
+  .discount-procent{
+    font-size: 0.9rem; 
+    right: 0;
+    left: -20%;  
+  }
+
+}
 
 @media (max-width:479px) {
+  .new-price{
+    font-size: 0.8rem;
+  }
+  .old-price{
+    font-size: 0.7rem;
+  }
+  .discount-procent{
+    font-size: 0.9rem; 
+    right: 0;
+    left: -40%;  
+  }
   .table-box {
     padding: 0.5rem;
     font-size: 0.9rem;
   }
+}
+@media (max-width:400px) {
+  .discount-procent{
+    font-size: 0.8rem; 
+    left: -45%;  
+  }
+
 }
 
 footer {

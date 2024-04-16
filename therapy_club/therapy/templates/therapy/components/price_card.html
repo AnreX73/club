@@ -10,15 +10,20 @@
     <a style="color: #3f3f3f;" href="{% url 'service' serv.slug  %}" class="table-box  service-title-box">{{ serv.title}} </a>  
     <div class="table-box  service-dur-box">{{ serv.duration}}</div>
     {% if serv.sale_procent == 0 %}
-    <div class="table-box service-price-box price-mark">
-        {{ serv.nice_price }}
-    </div>
+    <div class="table-box service-price-box price-mark">{{ serv.nice_price }}</div>
     {% else %}
-    <div class="table-box service-price-box price-mark">
+    <div class="table-discout-box">
+        <div class="two-prices-box">
+            <div class="new-price">{{ serv.alt_price }}</div>
+            <div class="old-price"><del>{{ serv.nice_price }}</del></div>
+        </div>
+        <div class="discount-procent">- {{ serv.sale_procent }} %</div>
+    </div>
+    <!-- <div class="table-box service-price-box price-mark">
         <del style="font-size: 0.7rem;">{{ serv.nice_price }}</del>
         <div class="alt-price-list">{{ serv.alt_price }}</div>
         <div class="sale_mark_list">- {{ serv.sale_procent }} %</div>
-    </div>
+    </div> -->
     {% endif %}
    
     {% if abonements %}
